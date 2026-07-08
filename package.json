@@ -1,0 +1,21 @@
+{
+  "name": "workshop-movie-magic-1",
+  "version": "1.0.0",
+  "description": "SoftUni JS Back-End Course Workshop",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alis-g/workshop-movie-magic-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/alis-g/workshop-movie-magic-1/issues"
+  },
+  "homepage": "https://github.com/alis-g/workshop-movie-magic-1#readme"
+}
