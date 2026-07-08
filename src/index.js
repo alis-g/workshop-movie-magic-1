@@ -3,10 +3,11 @@ import { engine } from 'express-handlebars';
 
 const app = express();
 
-app.engine('hbs', engine())
-
-app.set('view engine', 'hbs')
+app.engine('hbs', engine());
+app.set('view engine', 'hbs');
 app.set('views', './src/views');
+
+app.use(express.static('./src/public'))
 
 
 app.get('/',(req, res) => {
