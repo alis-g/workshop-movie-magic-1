@@ -23,13 +23,13 @@ SoftUni JS Back-End Course Workshop
  - [x] Show create movie page
  - [x] Add routes
  - [x] Add 404 page
- - [ ] Ready body data
- - [ ] Create movie
-   - [ ] Add action
-   - [ ] Add service
-   - [ ] Add repository
- - [ ] Redirect after creation
- - [ ] Add unique if for each cerated movie
+ - [x] Ready body data
+ - [x] Create movie
+   - [x] Add action
+   - [x] Add service
+   - [x] Add repository
+ - [x] Redirect after creation
+ - [x] Add unique if for each cerated movie
 ### Details
  - [ ] Add navigation button for detail page
  - [ ] Add route with param for details page 

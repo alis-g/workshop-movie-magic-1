@@ -12,6 +12,7 @@ app.set('views', './src/views');
 
 app.use(express.static('./src/public'))
 
+app.use(express.urlencoded())
 
 app.use(routes)
 

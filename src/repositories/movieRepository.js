@@ -12,11 +12,27 @@ async function readDb(collection) {
     return collection ? db[collection] : db;
 }
 
+async function writeDb(db) {
+    const content =  JSON.stringify(db, null, 2)
+    await fs.writeFile('./src/db.json', content, { encoding: 'utf-8' })
+}
+
 async function getAll() {
     const movies = await readDb('movies');
     return movies
 }
 
+async function  create(movieData) {
+
+    movieData.id = uuid()
+    const db = await readDb();
+
+    db.movies.push(movieData);
+
+    await writeDb(db)
+}
+
 export const moviesRepository = {
-    getAll
+    getAll,
+    create,
 }
