@@ -1,7 +1,7 @@
 import express from 'express';
 import { engine } from 'express-handlebars';
-import homeController from './controllers/homeController.js';
-import movieController from './controllers/movieController.js';
+import routes from './routes.js';
+
 const app = express();
 
 app.engine('hbs', engine({
@@ -12,8 +12,7 @@ app.set('views', './src/views');
 
 app.use(express.static('./src/public'))
 
-app.use('/', homeController);
-app.use('/movies', movieController)
 
+app.use(routes)
 
 app.listen(2000, () => console.log('Server is listening on  http://localhost:2000...'));
