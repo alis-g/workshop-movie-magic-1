@@ -17,6 +17,6 @@ async function getAll() {
     return movies
 }
 
-export const moviesR = {
+export const moviesRepository = {
     getAll
 }

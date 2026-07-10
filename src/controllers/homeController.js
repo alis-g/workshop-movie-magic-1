@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { moviesR } from "../repositories/movieRepository.js";
+import { moviesRepository } from "../repositories/movieRepository.js";
 
 const homeController = Router();
 
 homeController.get('/',async (req, res) => {
-    const movies = await moviesR.getAll()
+    const movies = await moviesRepository.getAll()
     res.render('home', {movies, pageTitle: 'Home Page'});
 });
 
