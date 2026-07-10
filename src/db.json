@@ -54,6 +54,17 @@
       "rating": 8.9,
       "description": "asdasdasd",
       "id": "f1199a15-6163-4213-a279-0cf7abe09a19"
+    },
+    {
+      "title": "movie",
+      "category": "",
+      "genre": "action",
+      "director": "bla",
+      "year": "222",
+      "image": "dddfd",
+      "rating": "4.5",
+      "description": "dshhjsjsd",
+      "id": "6fac80d1-c7cf-43d2-8748-bdf3bd2d5d8c"
     }
   ]
 }
