@@ -15,8 +15,8 @@ SoftUni JS Back-End Course Workshop
  - [x] Add home controller
  - [x] Add movie data layer
  - [x] Add movie service
- - [ ] Render single movie on home page
- - [ ] Render all movies on home page
+ - [x] Render single movie on home page
+ - [x] Render all movies on home page
  - [ ] Show no movies screen
 ### Create Movie
  - [ ] Add Movie Controller
