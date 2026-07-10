@@ -1,3 +1,4 @@
+import { log } from 'console';
 import fs from 'fs/promises';
 import { v4 as uuid } from 'uuid';
 
@@ -21,7 +22,18 @@ async function getAll() {
     const movies = await readDb('movies');
     return movies
 }
+async function getById(movieId) {
+    const movies = await readDb('movies');
 
+    console.log('movieId:', movieId);
+    console.log('movies ids:', movies.map(m => m.id));
+
+    const movie = movies.find(m => m.id === movieId);
+
+    console.log('movie:', movie);
+
+    return movie;
+}
 async function  create(movieData) {
 
     movieData.id = uuid()
@@ -35,4 +47,5 @@ async function  create(movieData) {
 export const moviesRepository = {
     getAll,
     create,
+    getById
 }
