@@ -5,8 +5,8 @@ const movieController = Router();
 
 
 movieController.get('/search', async (req, res) => {
-    const searchQuery = req.query ;
-    const movies = await movieService.getAll();
+    const filter = req.query ;
+    const movies = await movieService.getAll(filter);
     res.render('movies/search', { movies })
 })
 movieController.get('/create', async (req,res) => {

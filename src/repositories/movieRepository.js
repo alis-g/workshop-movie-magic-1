@@ -18,9 +18,20 @@ async function writeDb(db) {
     await fs.writeFile('./src/db.json', content, { encoding: 'utf-8' })
 }
 
-async function getAll() {
-    const movies = await readDb('movies');
-    return movies
+async function getAll(filter = {}) {
+    let movies = await readDb('movies');
+    if(filter.search){
+        movies = movies.filter(m => m.title.toLowerCase().includes(filter.search.toLowerCase()))
+    }
+
+    if(filter.year) {
+        movies = movies.filter(movie => movie.year === filter.year)
+    }
+
+    if(filter.genre){
+        movies = movies.filter(m => m.genre.toLowerCase() === filter.genre.toLowerCase() )
+    }
+        return movies
 }
 async function getById(movieId) {
     const movies = await readDb('movies');
