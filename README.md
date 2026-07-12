@@ -46,8 +46,8 @@ SoftUni JS Back-End Course Workshop
    - [x] By title 
  - [x] Remember search words
 ### Bonuses
- - [] Dynamic page title (basic)
- - [ ] Rating (temp solution)
+ - [x] Dynamic page title (basic)
+ - [x] Rating (temp solution)
  - [x] File Persistance
 
 ## Workshop 2 - PostgreSQL and Prisma

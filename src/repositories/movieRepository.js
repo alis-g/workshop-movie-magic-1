@@ -36,12 +36,9 @@ async function getAll(filter = {}) {
 async function getById(movieId) {
     const movies = await readDb('movies');
 
-    console.log('movieId:', movieId);
-    console.log('movies ids:', movies.map(m => m.id));
 
     const movie = movies.find(m => m.id === movieId);
 
-    console.log('movie:', movie);
 
     return movie;
 }
