@@ -1,0 +1,14 @@
+-- CreateTable
+CREATE TABLE "movies" (
+    "id" SERIAL NOT NULL,
+    "title" TEXT NOT NULL,
+    "category" TEXT NOT NULL,
+    "genre" TEXT NOT NULL,
+    "director" TEXT NOT NULL,
+    "year" INTEGER NOT NULL,
+    "imageUrl" TEXT NOT NULL,
+    "rating" INTEGER NOT NULL,
+    "description" TEXT NOT NULL,
+
+    CONSTRAINT "movies_pkey" PRIMARY KEY ("id")
+);

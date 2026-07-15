@@ -66,8 +66,8 @@ SoftUni JS Back-End Course Workshop
  - [x] Instantiate prisma client
 
 ### Setup models
- - [ ] Add Movie model
- - [ ] Migrate database `npx prisma migrate dev --name add_movies_table` or `npx prisma db push`
+ - [x] Add Movie model
+ - [x] Migrate database `npx prisma migrate dev --name add_movies_table` or `npx prisma db push`
 
 ### Refactor Movies
  - [ ] Remove uuid
