@@ -3,16 +3,15 @@ import fs from 'fs/promises';
 import { prisma } from '../lib/prisma.js'
 
 
-async function readDb(collection) {
-    const content = await fs.readFile('./src/db.json', { encoding: 'utf-8' });
-    const db = JSON.parse(content);
+// async function readDb(collection) {
+//     const content = await prisma.movie.findMany()
 
-    if (collection && !db.hasOwnProperty(collection)) {
-        throw new Error('No collection');
-    }
+//     if (collection && !db.hasOwnProperty(collection)) {
+//         throw new Error('No collection');
+//     }
 
-    return collection ? db[collection] : db;
-}
+//     return collection ? db[collection] : db;
+// }
 
 async function writeDb(db) {
     const content =  JSON.stringify(db, null, 2)
@@ -20,7 +19,7 @@ async function writeDb(db) {
 }
 
 async function getAll(filter = {}) {
-    let movies = await readDb('movies');
+    let movies = await prisma.movie.findMany()
     if(filter.search){
         movies = movies.filter(m => m.title.toLowerCase().includes(filter.search.toLowerCase()))
     }
@@ -46,7 +45,7 @@ async function getById(movieId) {
 async function  create(movieData) {
    const movie = await prisma.movie.create({
     data: movieData
-   })
+   }) 
    return movie
 }
 
