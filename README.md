@@ -73,7 +73,7 @@ SoftUni JS Back-End Course Workshop
  - [x] Remove uuid
  - [x] Create Movie
  - [x] Read all movies
- - [ ] Movie details page 
+ - [x] Movie details page 
  - [ ] Remove file persistance related code
 
 ### Artist
