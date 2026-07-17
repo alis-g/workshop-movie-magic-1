@@ -8,6 +8,8 @@ function getById(movieId){
     return moviesRepository.getById(movieId)
 }
 function create(movieData){
+    movieData.rating = Number(movieData.rating)
+    movieData.year = Number(movieData.year)
     return moviesRepository.create(movieData)
 }
 export const movieService = {
