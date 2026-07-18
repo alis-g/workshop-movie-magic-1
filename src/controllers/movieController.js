@@ -33,7 +33,6 @@ movieController.get('/:movieId', async (req, res) => {
 
     const ratingStars = '&#x2605;'.repeat(Math.floor(movie.rating))
 
-
     res.render('movies/details', { movie , ratingStars})
 });
 
