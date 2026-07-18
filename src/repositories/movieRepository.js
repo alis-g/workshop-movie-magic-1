@@ -6,18 +6,20 @@ import { connect } from 'http2';
 
 
 async function getAll(filter = {}) {
-    let movies = await prisma.movie.findMany()
-    if(filter.search){
-        movies = movies.filter(m => m.title.toLowerCase().includes(filter.search.toLowerCase()))
-    }
+    let movies = await prisma.movie.findMany({
+        where:{
+            year: filter.year || undefined,
+            genre: {
+                equals: filter.genre || undefined,
+                mode: 'insensitive'
+            },
+            title: {
+                contains: filter.search,
+                mode: 'insensitive'
+            }
+        }
+    })
 
-    if(filter.year) {
-        movies = movies.filter(movie => movie.year === filter.year)
-    }
-
-    if(filter.genre){
-        movies = movies.filter(m => m.genre.toLowerCase() === filter.genre.toLowerCase() )
-    }
         return movies
 }
 async function getById(movieId) {

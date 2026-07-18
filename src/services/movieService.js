@@ -1,6 +1,7 @@
 import { moviesRepository } from "../repositories/movieRepository.js";
 
 function getAll(filter = {}) {
+    filter.year = Number(filter.year)
     return moviesRepository.getAll(filter)
 }
 
