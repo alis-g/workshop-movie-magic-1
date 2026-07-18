@@ -1,5 +1,10 @@
 import { prisma } from "../lib/prisma"
 
+async function getAll() {
+    const artists = await prisma.artist.findMany()
+    return artists
+}
+
 async function  create(artistData) {
    const artist = await prisma.artist.create({
     data: artistData
@@ -8,6 +13,8 @@ async function  create(artistData) {
 }
 
 
+
 export const artistRepository = {
-    create
+    create,
+    getAll
 }

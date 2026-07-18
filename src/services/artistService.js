@@ -1,3 +1,4 @@
+import { get } from "node:http";
 import { artistRepository } from "../repositories/artistRepository.js";
 
 function create (artistData){
@@ -5,6 +6,11 @@ function create (artistData){
     return artistRepository.create(artistData)
 }
 
+function getAll (){
+    return artistRepository.getAll()
+}
+
 export const artistService = {
-    create
+    create,
+    getAll
 }
