@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { movieService } from "../services/movieService.js";
 import { artistService } from "../services/artistService.js";
+import { isAuth } from "../middleware/authMiddleware.js";
 
 const movieController = Router();
 
@@ -12,11 +13,11 @@ movieController.get('/search', async (req, res) => {
 
     res.render('movies/search', { movies, filter, pageTitle: 'Search Movies' })
 })
-movieController.get('/create', async (req, res) => {
+movieController.get('/create', isAuth, async (req, res) => {
     res.render('movies/create', { pageTitle: 'Create Movies' })
 })
 
-movieController.post('/create', async (req, res) => {
+movieController.post('/create', isAuth ,async (req, res) => {
 
     const newMovie = req.body
 
@@ -40,7 +41,7 @@ movieController.get('/search', async (req, res) => {
     res.render('search')
 })
 
-movieController.get('/:movieId/attach', async (req, res) => {
+movieController.get('/:movieId/attach', isAuth, async (req, res) => {
     const movieId = req.params.movieId
 
     const movie = await movieService.getById(movieId)
@@ -49,7 +50,7 @@ movieController.get('/:movieId/attach', async (req, res) => {
     res.render('movies/attach', {pageTitle: 'Attach Movie', movie, artists})
 })
 
-movieController.post('/:movieId/attach', async (req, res) => {
+movieController.post('/:movieId/attach', isAuth, async (req, res) => {
     const movieId = req.params.movieId
     const artistId = req.body.artist
 
