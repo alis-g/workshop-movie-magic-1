@@ -10,6 +10,16 @@ async function create (userData){
     return user
 }
 
+async function findByEmail(email) {
+    const user = await prisma.user.findUnique({
+        where:{email}
+    })
+
+    return user
+}
+
 export const userRepository = {
-    create
+    create,
+    findByEmail
+    
 }

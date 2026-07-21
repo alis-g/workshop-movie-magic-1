@@ -121,12 +121,12 @@ SoftUni JS Back-End Course Workshop
  - [x] Hash password `npm i bcrypt`
 
 ### Login
- - [] Add login page
- - [] Add login post action
- - [] Add login service method
- - [] Add findByEmail repository method
- - [] Validate password
- - [] Issue JWT token `npm i jsonwebtoken`
+ - [x] Add login page
+ - [x] Add login post action
+ - [x] Add login service method
+ - [x] Add findByEmail repository method
+ - [x] Validate password
+ - [x] Issue JWT token `npm i jsonwebtoken`
  - [] Return token in cookie
 
 ### Logout
