@@ -73,6 +73,25 @@ movieController.get('/:movieId/delete', isAuth, async (req, res) => {
 
 })
 
+function prepareCategoryViewData(movie) {
+    const categories = ['TV Show', 'Animation', 'Movie', 'Documentary', 'Short Film'];
+
+    const categoryOptions = categories.map(category => {
+        const value = category.toLowerCase().replaceAll(' ', '-');
+
+        const option = {
+            value,
+            label: category,
+            selected: movie.category === value
+        };
+
+        return option;
+    });
+
+    return categoryOptions;
+}
+
+
 movieController.get('/:movieId/edit', isAuth, async(req, res) => {
     const movieId = Number(req.params.movieId)
     const userId = req.user.id
@@ -82,7 +101,10 @@ movieController.get('/:movieId/edit', isAuth, async(req, res) => {
     if(movie.userId !== userId){
         return res.status(401).send('Unauthorized')
     }
-    res.render('movies/edit', {movie})
+
+    const categoryOptions = prepareCategoryViewData(movie)
+
+    res.render('movies/edit', {movie, categoryOptions})
 })
 
 movieController.post('/:movieId/edit', isAuth, async(req, res) => {

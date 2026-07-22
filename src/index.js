@@ -7,9 +7,15 @@ import { authMiddleware } from './middleware/authMiddleware.js';
 const app = express();
 
 app.engine('hbs', engine({
-    extname: 'hbs'
+    extname: 'hbs',
+    helpers: {
+        isSelected(){
+            return this.selected ? 'selected' : ''
+        }
+    }
 }));
 app.set('view engine', 'hbs');
+
 app.set('views', './src/views');
 
 app.use(express.static('./src/public'))
