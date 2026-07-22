@@ -20,8 +20,9 @@ movieController.get('/create', isAuth, async (req, res) => {
 movieController.post('/create', isAuth ,async (req, res) => {
 
     const newMovie = req.body
+    const userId = req.user.id
 
-    await movieService.create(newMovie)
+    await movieService.create(newMovie, userId)
 
     res.redirect('/')
 
@@ -29,12 +30,15 @@ movieController.post('/create', isAuth ,async (req, res) => {
 
 movieController.get('/:movieId', async (req, res) => {
     const movieId = req.params.movieId;
+    const userId = req?.user.id
 
     const movie = await movieService.getById(movieId);
 
+    const isOwner = movie.userId && movie.userId === userId
+
     const ratingStars = '&#x2605;'.repeat(Math.floor(movie.rating))
 
-    res.render('movies/details', { movie , ratingStars})
+    res.render('movies/details', { movie , ratingStars, isOwner})
 });
 
 movieController.get('/search', async (req, res) => {
@@ -59,4 +63,36 @@ movieController.post('/:movieId/attach', isAuth, async (req, res) => {
     res.redirect(`/movies/${movieId}`)
 })
 
+movieController.get('/:movieId/delete', isAuth, async (req, res) => {
+    const movieId = Number(req.params.movieId)
+    const userId = req.user.id
+
+    await movieService.remove(movieId, userId)
+
+    res.redirect('/')
+
+})
+
+movieController.get('/:movieId/edit', isAuth, async(req, res) => {
+    const movieId = Number(req.params.movieId)
+    const userId = req.user.id
+    
+    const movie = await movieService.getById(movieId)
+
+    if(movie.userId !== userId){
+        return res.status(401).send('Unauthorized')
+    }
+    res.render('movies/edit', {movie})
+})
+
+movieController.post('/:movieId/edit', isAuth, async(req, res) => {
+    const movieId = Number(req.params.movieId)
+    const userId = req.user.id
+    const movieData = req.body
+    
+    const movie = await movieService.edit(movieId, movieData, userId)
+
+    res.redirect(`/movies/${movieId}`)
+
+})
 export default movieController;
