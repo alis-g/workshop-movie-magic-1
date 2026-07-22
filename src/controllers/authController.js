@@ -26,12 +26,14 @@ authController.get('/login', isGuest, async (req, res) => {
 authController.post('/register', isGuest, async (req, res) => {
     const {email, password, repeatPassword} = req.body
 
-    await authService.register({email, password, repeatPassword})
+    const token = await authService.register({email, password, repeatPassword})
+
+   res.cookie('auth', token, {httpOnly: true})
 
     res.redirect('/')
 })
 
-authController.get('/logout', isAuth, (req, res) => {
+authController.get('/logout', isAuth,(req, res) => {
     res.clearCookie('auth')
     res.redirect('/')
 })

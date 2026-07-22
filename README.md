@@ -153,7 +153,7 @@ SoftUni JS Back-End Course Workshop
  - [x] Show dynamic navigation based on user session
 
 ### Bonuses
- - [] Automatic login on register
+ - [x] Automatic login on register
  - [] Fix secret
  - [] Fix select on edit
  - [ ] Make token generation async
